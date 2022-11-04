@@ -1,12 +1,17 @@
-from ursina.prefabs.button import *
 from ursina import *
+
+from components.game_state import GameState
 from components.game_window import GameWindow
+from components.menu.menu import Menu
 from components.menu.menu_button import MenuButton
 
-GameWindow.setup_window()
+game_window = GameWindow()
 app = Ursina()
-GameWindow.setup_window_post_ursina()
+game_state = GameState()
+game_window.setup()
 
-m = MenuButton()
+menu = Menu(game_state)
+menu.setup()
+menuButton = MenuButton(menu)
 
 app.run()  # opens a window and starts the game.
