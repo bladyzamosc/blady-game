@@ -4,7 +4,7 @@ ORIGIN_ONE = -0.2
 
 SCALE_Y = 0.5
 
-SCALE_X = 4.8
+SCALE_X = 4.9
 
 
 class Menu(Entity):

@@ -1,4 +1,4 @@
-from ursina import *
+from ursina import Ursina
 
 from components.game_state import GameState
 from components.game_window import GameWindow

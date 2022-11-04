@@ -1,13 +1,12 @@
-from ursina import *
+from ursina import Entity, camera, color, Button
 
-from components.menu.menu import Menu
 
 class MenuButton(Entity):
 
     def __init__(self, menu):
         self.parent = camera.ui
         self.menu = menu
-        menu_button = Button(color=color.dark_gray, scale=.05, text_origin=(-.5, 0))
+        menu_button = Button(color=color.dark_gray, scale=.05, text_origin=(-.5, 0), icon = 'cog')
         menu_button.on_click = self.show_menu
         menu_button.position = (0.85, 0.45, 0)
 

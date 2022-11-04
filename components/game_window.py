@@ -7,7 +7,6 @@ from components.util import Util
 
 class GameWindow:
     def __init__(self):
-        window.title = 'Blady game'
         window.borderless = False
         window.fullscreen = False
         window.icon_filename = Util.path_to_asset('game.ico')
