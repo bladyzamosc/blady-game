@@ -1,34 +1,26 @@
-import time
-
 from ursina import held_keys
 
 from components.fado import Fado
-
-up = 'w'
-down = 's'
-left = 'a'
-right = 'd'
+from components.util import pause
 
 
 class GamePlay:
-    def __init__(self, game_state):
-        self.state = game_state
-        self.fado = Fado(self.state)
-        self.bloked = True
+    def __init__(self):
+        self.fado = Fado()
+        self.fado.visible = False
+        self.blocked = True
 
-    def start_game(self):
-        self.bloked = False
+    def pause(self):
+        self.blocked = True
 
-    def handle_keys(self):
-        if not self.bloked:
-            self.move_fado()
+    def resume(self):
+        self.blocked = False
+        self.fado.visible = True
 
-    def move_fado(self):
-        if held_keys[up]:
-            self.fado.position += (0, time.dt, 0)
-        if held_keys[down]:
-            self.fado.position -= (0, time.dt, 0)
-        if held_keys[right]:
-            self.fado.position += (time.dt, 0, 0)
-        if held_keys[left]:
-            self.fado.position -= (time.dt, 0, 0)
+    def save(self):
+        print("save")
+
+    def update_game_play(self):
+        if not self.blocked:
+            self.fado.update_fado()
+

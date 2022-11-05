@@ -11,7 +11,7 @@ SCALE_X = 4.9
 
 class Menu(Entity):
 
-    def __init__(self, game_state, visible=False):
+    def __init__(self, game_play):
         super().__init__(
             parent=camera.ui,
             model='quad',
@@ -21,20 +21,25 @@ class Menu(Entity):
             texture_scale=(5, 8),
             color=MENU_BACKGROUND_COLOR
         )
-        self.game_state = game_state
-        self.visible = visible
+        self.game_play = game_play
+        self.visible = True
+        self.enabled = True
         self.item_parent = Entity(parent=self, scale=(1 / 5, 1 / 5))
 
     def setup(self):
         origin_two = -1.5
         right = 1
+        start = self.create_button(right, origin_two, "Start new")
+        start.on_click = self.start_new
+        origin_two += 0.1
+        right -= 0.5
         resume = self.create_button(right, origin_two, "Resume")
-        resume.on_click = self.change_visibility
+        resume.on_click = self.switch
         origin_two += 0.1
         right -= 0.5
         about = self.create_button(right, origin_two, "About")
-        origin_two += 0.6
-        right -= 3
+        origin_two += 0.5
+        right -= 2.5
         exit_b = self.create_button(right, origin_two, "Exit")
         exit_b.on_click = self.quit
 
@@ -53,14 +58,18 @@ class Menu(Entity):
         b.text_entity.color=MENU_TEXTURE_COLOR
         return b
 
-    def change_visibility(self):
+    def switch(self):
         if self.visible:
-            self.game_state.resume()
+            self.game_play.resume()
         else:
-            self.game_state.pause()
+            self.game_play.pause()
         self.visible = not self.visible
         self.enabled = self.visible
 
+    def start_new(self):
+        print("Implement start")
+        self.switch()
+
     def quit(self):
-        self.game_state.save()
+        self.game_play.save()
         application.quit()

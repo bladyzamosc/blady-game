@@ -9,10 +9,10 @@ class MenuButton(Entity):
         self.parent = camera.ui
         self.menu = menu
         menu_button = Button(color=MENU_BUTTON_COLOR, scale_y=.05, scale_x=.1)
-        menu_button.on_click = self.show_menu
+        menu_button.on_click = self.show_hide_menu
         menu_button.position = (0.83, 0.45, 0)
         menu_button.text='Menu'
         menu_button.text_entity.color=MENU_TEXTURE_COLOR
 
-    def show_menu(self):
-        self.menu.change_visibility()
+    def show_hide_menu(self):
+        self.menu.switch()
