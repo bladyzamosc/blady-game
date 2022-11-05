@@ -6,25 +6,20 @@ from components.game_window import GameWindow
 from components.menu import Menu
 from components.menu_button import MenuButton
 from components.splash import Splash
-from components.util import pause
+from components.const import PAUSE
 
 global game_state
 global game_window
 
 
-def setup_controls(game_window, game_play):
+def setup_controls():
     Splash.splash()
     background = Background()
     background.setup()
 
 
-def pre_app_setup():
-    game_window = GameWindow()
-    return game_window
-
-
 def handle_keys():
-    if held_keys[pause]:
+    if held_keys[PAUSE]:
         menu.switch()
 
 
@@ -34,10 +29,10 @@ def update():
 
 
 # Start
-game_window = pre_app_setup()
+game_window = GameWindow()
 app = Ursina()
 game_play = GamePlay()
-setup_controls(game_window, game_play)
+setup_controls()
 game_window.setup()
 menu = Menu(game_play)
 menu.setup()

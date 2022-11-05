@@ -1,7 +1,4 @@
-from ursina import held_keys
-
 from components.fado import Fado
-from components.util import pause
 
 
 class GamePlay:
