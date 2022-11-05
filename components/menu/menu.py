@@ -1,5 +1,7 @@
 from ursina import Entity, color, camera, Button, application
 
+from components.const import MENU_BUTTON_COLOR, MENU_BACKGROUND_COLOR, MENU_TEXTURE_COLOR
+
 ORIGIN_ONE = -0.2
 
 SCALE_Y = 0.5
@@ -17,7 +19,7 @@ class Menu(Entity):
             origin=(-.0, .0),
             position=(-.0, .0),
             texture_scale=(5, 8),
-            color=color.dark_gray
+            color=MENU_BACKGROUND_COLOR
         )
         self.game_state = game_state
         self.visible = visible
@@ -46,8 +48,9 @@ class Menu(Entity):
             z=-.01
         )
         b.position = (-1, right)
-        b.color = color.red
+        b.color = MENU_BUTTON_COLOR
         b.text = text
+        b.text_entity.color=MENU_TEXTURE_COLOR
         return b
 
     def change_visibility(self):
