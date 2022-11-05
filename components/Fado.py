@@ -2,7 +2,7 @@ import time
 
 from ursina import camera, Entity, held_keys, window
 
-from components.util import up, down, right, left
+from components.const import UP, DOWN, RIGHT, LEFT
 
 FACTOR = 0.07
 
@@ -24,13 +24,13 @@ class Fado(Entity):
         self.ensure_position()
 
     def react_key(self):
-        if held_keys[up]:
+        if held_keys[UP]:
             self.position += (0, time.dt, 0)
-        if held_keys[down]:
+        if held_keys[DOWN]:
             self.position -= (0, time.dt, 0)
-        if held_keys[right]:
+        if held_keys[RIGHT]:
             self.position += (time.dt, 0, 0)
-        if held_keys[left]:
+        if held_keys[LEFT]:
             self.position -= (time.dt, 0, 0)
 
     def ensure_position(self):

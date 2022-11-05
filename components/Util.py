@@ -1,10 +1,5 @@
 from pathlib import Path
 
-up = 'w'
-down = 's'
-left = 'a'
-right = 'd'
-pause = 'p'
 
 class Util:
     @staticmethod
