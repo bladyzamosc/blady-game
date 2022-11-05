@@ -9,7 +9,6 @@ class GameWindow:
     def __init__(self):
         window.borderless = False
         window.fullscreen = False
-        window.icon_filename = Util.path_to_asset('game.ico')
 
     def setup(self):
         window.exit_button.visible = False

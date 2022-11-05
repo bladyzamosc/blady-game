@@ -59,6 +59,7 @@ class Menu(Entity):
         else:
             self.game_state.pause()
         self.visible = not self.visible
+        self.enabled = self.visible
 
     def quit(self):
         self.game_state.save()
