@@ -21,6 +21,7 @@ class GamePlay:
             destroy(self.fado)
         if not (self.obstacles is None):
             self.obstacles.destroy_elements()
+        self.reset()
 
     def pause(self):
         self.blocked = True

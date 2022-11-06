@@ -1,4 +1,4 @@
-from ursina import Entity, color, camera, Button, application
+from ursina import Entity, camera, Button, application
 
 from components.const import MENU_BUTTON_COLOR, MENU_BACKGROUND_COLOR, MENU_TEXTURE_COLOR
 
@@ -25,19 +25,25 @@ class Menu(Entity):
         self.visible = True
         self.enabled = True
         self.item_parent = Entity(parent=self, scale=(1 / 5, 1 / 5))
+        self.setup()
 
     def setup(self):
         origin_two = -1.5
         right = 1
-        start = self.create_button(right, origin_two, "Game")
-        start.on_click = self.switch
+        self.start_b = self.create_button(right, origin_two, "Start new")
+        self.start_b.on_click = self.start_new_game
         origin_two += 0.1
         right -= 0.5
-        about = self.create_button(right, origin_two, "About")
-        origin_two += 0.6
-        right -= 3
-        exit_b = self.create_button(right, origin_two, "Exit")
-        exit_b.on_click = self.quit
+        self.resume = self.create_button(right, origin_two, "Resume")
+        self.resume.on_click = self.switch
+        self.resume.enabled = False
+        origin_two += 0.1
+        right -= 0.5
+        self.about = self.create_button(right, origin_two, "About")
+        origin_two += 0.5
+        right -= 2.5
+        self.exit_b = self.create_button(right, origin_two, "Exit")
+        self.exit_b.on_click = self.quit
 
     def create_button(self, right, origin_two, text):
         b = Button(
@@ -51,19 +57,20 @@ class Menu(Entity):
         b.position = (-1, right)
         b.color = MENU_BUTTON_COLOR
         b.text = text
-        b.text_entity.color=MENU_TEXTURE_COLOR
+        b.text_entity.color = MENU_TEXTURE_COLOR
         return b
 
-    def switch(self):
+    def switch(self, resume_enabled=True):
         if self.visible:
             self.game_play.resume()
         else:
             self.game_play.pause()
         self.visible = not self.visible
         self.enabled = self.visible
+        self.resume.enabled = resume_enabled
 
-    def start_new(self):
-        self.game_play.reset()
+    def start_new_game(self):
+        self.game_play.destroy_elements()
         self.switch()
 
     def quit(self):

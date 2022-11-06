@@ -31,9 +31,8 @@ def update():
         game_score.update_score()
     else:
         Splash.game_over(game_play.game_stats.score)
-        menu.switch()
+        menu.switch(False)
         game_play.destroy_elements()
-        game_play.reset()
 
 
 # Start
@@ -45,6 +44,5 @@ game_score = GameScore(game_play)
 setup_controls()
 game_window.setup()
 menu = Menu(game_play)
-menu.setup()
 menuButton = MenuButton(menu)
 app.run()

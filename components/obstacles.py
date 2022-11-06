@@ -25,7 +25,6 @@ class Obstacles:
         self.generate_obstacles(game_stats.counter, NEGATIVE, MULTIPLICATOR)
         self.generate_obstacles(game_stats.counter, POSITIVE, MULTIPLICATOR_POSITIVE)
         self.manage_obstacles(game_stats, fado)
-        print(game_stats.counter, "  ", game_stats.score, "  ", game_stats.lives)
 
     def generate_obstacles(self, counter, type_of_obstacle, factor):
         generate = choice([True, False])
