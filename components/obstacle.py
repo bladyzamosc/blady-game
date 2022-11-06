@@ -15,6 +15,7 @@ class Obstacle(Entity):
         self.scale = (factor, factor, factor)
         self.position = (window.bottom_right.x, random.uniform(window.bottom_right.y, window.top_right.y), 0)
         self.move = move
+        self.collider = 'box'
 
     def move_position(self):
         self.position -= (self.move.delta_x, self.move.delta_y, 0)

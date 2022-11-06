@@ -4,9 +4,9 @@ MIN_Y = 0.02
 
 MAX_Y = 0.01
 
-MAX = 0.05
+MAX = 0.015
 
-MIN = 0.01
+MIN = 0.005
 
 
 class Move:
@@ -15,10 +15,10 @@ class Move:
         self.delta_y = delta_y
 
     @staticmethod
-    def random_move(straight=True):
-        x = uniform(MIN, MAX)
+    def random_move(straight=True, base=0.0):
+        x = uniform(MIN, MAX) + base
         if straight:
             y = 0
         else:
-            y = uniform(MIN_Y, MAX_Y)
+            y = uniform(MIN_Y, MAX_Y) + base
         return Move(x, y)
