@@ -1,6 +1,6 @@
 from random import choice, uniform
 
-from ursina import destroy, distance
+from ursina import destroy
 
 from components.const import NEGATIVE, POSITIVE
 from components.move import Move
@@ -27,12 +27,12 @@ class Obstacles:
         self.manage_obstacles(game_stats, fado)
         print(game_stats.counter, "  ", game_stats.score, "  ", game_stats.lives)
 
-    def generate_obstacles(self, counter, type, factor):
+    def generate_obstacles(self, counter, type_of_obstacle, factor):
         generate = choice([True, False])
         base = self.determine_base(counter)
         if generate and counter % factor == 0:
             m = Move.random_move(straight=True, base=base)
-            o = Obstacle(type, uniform(MIN, MAX), m)
+            o = Obstacle(type_of_obstacle, uniform(MIN, MAX), m)
             self.elements.append(o)
 
     def manage_obstacles(self, game_stats, fado):
@@ -49,6 +49,10 @@ class Obstacles:
 
     def determine_base(self, counter):
         return (counter / LEVEL_MULTIPLICATOR) * LEVEL_BASE
+
+    def destroy_elements(self):
+        for o in self.elements:
+            destroy(o)
 
     def handle_collision(self, game_stats, o, fado):
         interacts = fado.intersects(o)

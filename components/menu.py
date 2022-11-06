@@ -29,17 +29,13 @@ class Menu(Entity):
     def setup(self):
         origin_two = -1.5
         right = 1
-        start = self.create_button(right, origin_two, "Start new")
-        start.on_click = self.start_new
-        origin_two += 0.1
-        right -= 0.5
-        resume = self.create_button(right, origin_two, "Resume")
-        resume.on_click = self.switch
+        start = self.create_button(right, origin_two, "Game")
+        start.on_click = self.switch
         origin_two += 0.1
         right -= 0.5
         about = self.create_button(right, origin_two, "About")
-        origin_two += 0.5
-        right -= 2.5
+        origin_two += 0.6
+        right -= 3
         exit_b = self.create_button(right, origin_two, "Exit")
         exit_b.on_click = self.quit
 
@@ -67,7 +63,7 @@ class Menu(Entity):
         self.enabled = self.visible
 
     def start_new(self):
-        print("Implement start")
+        self.game_play.reset()
         self.switch()
 
     def quit(self):

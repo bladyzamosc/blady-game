@@ -26,8 +26,14 @@ def handle_keys():
 
 def update():
     handle_keys()
-    game_play.update_game_play()
-    game_score.update_score()
+    if not game_play.is_game_over():
+        game_play.update_game_play()
+        game_score.update_score()
+    else:
+        Splash.game_over(game_play.game_stats.score)
+        menu.switch()
+        game_play.destroy_elements()
+        game_play.reset()
 
 
 # Start

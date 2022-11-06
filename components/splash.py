@@ -15,8 +15,8 @@ class Splash:
         logo.animate_color(MENU_TEXTURE_COLOR, duration=2, delay=1, curve=curve.out_quint_boomerang)
 
         Text.default_resolution = 1080 * Text.size
-        text = Text(text="This is my Fado")
-        text.position = (-0.20, 0.4, 0)
+        text = Text(text="Blady Game")
+        text.position = (-0.15, 0.4, 0)
         text.scale = 2
         text.world_z = camera.overlay.z - 1
 
@@ -31,3 +31,12 @@ class Splash:
 
         logo.input = splash_input
         text.input = splash_input
+
+    @staticmethod
+    def game_over(number):
+        Text.default_resolution = 1080 * Text.size
+        text = Text(text="Game over. Your score: " + str(number))
+        text.position = (-0.30, 0.4, 0)
+        text.scale = 2
+        text.world_z = camera.overlay.z - 1
+        destroy(text, delay=DELAY - 1)
