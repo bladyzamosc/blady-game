@@ -1,8 +1,6 @@
 from ursina import camera, color, Sprite, destroy, curve, Text
 
-from components.const import MENU_BACKGROUND_COLOR, MENU_TEXTURE_COLOR
-
-DELAY = 4
+from components.const import MENU_BACKGROUND_COLOR, MENU_TEXTURE_COLOR, DELAY
 
 
 class Splash:
@@ -23,14 +21,6 @@ class Splash:
         camera.overlay.animate_color(color.clear, duration=1, delay=2)
         destroy(text, delay=DELAY - 1)
         destroy(logo, delay=DELAY)
-
-        def splash_input(key):
-            destroy(logo)
-            destroy(text)
-            camera.overlay.animate_color(color.clear, duration=.25)
-
-        logo.input = splash_input
-        text.input = splash_input
 
     @staticmethod
     def game_over(number):

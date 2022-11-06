@@ -1,7 +1,7 @@
 from ursina import *
 
 from components.background import Background
-from components.const import PAUSE
+from components.const import PAUSE, DELAY
 from components.game_play import GamePlay
 from components.game_score import GameScore
 from components.game_window import GameWindow
@@ -44,5 +44,12 @@ game_score = GameScore(game_play)
 setup_controls()
 game_window.setup()
 menu = Menu(game_play)
+
+
+def method_name():
+    return menu.set_visible(True)
+
+
+invoke(method_name, delay=DELAY)
 menuButton = MenuButton(menu)
 app.run()

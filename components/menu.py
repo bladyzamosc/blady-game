@@ -22,8 +22,7 @@ class Menu(Entity):
             color=MENU_BACKGROUND_COLOR
         )
         self.game_play = game_play
-        self.visible = True
-        self.enabled = True
+        self.set_visible(False)
         self.item_parent = Entity(parent=self, scale=(1 / 5, 1 / 5))
         self.setup()
 
@@ -65,9 +64,12 @@ class Menu(Entity):
             self.game_play.resume()
         else:
             self.game_play.pause()
-        self.visible = not self.visible
-        self.enabled = self.visible
+        self.set_visible(not self.visible)
         self.resume.enabled = resume_enabled
+
+    def set_visible(self, flag):
+        self.visible = flag
+        self.enabled = flag
 
     def start_new_game(self):
         self.game_play.destroy_elements()

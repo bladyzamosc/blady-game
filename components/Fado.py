@@ -15,7 +15,7 @@ class Fado(Entity):
             model='cube'
         )
         self.visible = True
-        self.texture = 'assets/labrador.gif'
+        self.texture = 'assets/labrador.png'
         self.scale = (FACTOR, FACTOR, FACTOR)
         self.position = (-0.80, 0, 0)
         self.collider = 'box'
