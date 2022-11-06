@@ -30,9 +30,6 @@ class GamePlay:
         self.blocked = False
         self.fado.visible = True
 
-    def save(self):
-        print("save")
-
     def update_game_play(self):
         if not self.blocked:
             self.game_stats.update_counter()

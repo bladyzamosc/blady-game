@@ -1,6 +1,6 @@
-from ursina import Entity, camera, Button, application
+from ursina import Entity, camera, Button, application, Text, destroy
 
-from components.const import MENU_BUTTON_COLOR, MENU_BACKGROUND_COLOR, MENU_TEXTURE_COLOR
+from components.const import MENU_BUTTON_COLOR, MENU_BACKGROUND_COLOR, MENU_TEXTURE_COLOR, DELAY, GOLD
 
 ORIGIN_ONE = -0.2
 
@@ -39,6 +39,7 @@ class Menu(Entity):
         origin_two += 0.1
         right -= 0.5
         self.about = self.create_button(right, origin_two, "About")
+        self.about.on_click = self.about_clicked
         origin_two += 0.5
         right -= 2.5
         self.exit_b = self.create_button(right, origin_two, "Exit")
@@ -76,5 +77,13 @@ class Menu(Entity):
         self.switch()
 
     def quit(self):
-        self.game_play.save()
         application.quit()
+
+    def about_clicked(self):
+        Text.default_resolution = 1080 * Text.size
+        text1 = Text(text="Description: The very first program in Python", scale=1, world_z=camera.overlay.z - 1,
+                     color=GOLD, position=(-0.8, -0.35, 0))
+        destroy(text1, delay=DELAY)
+        text2 = Text(text="Email: bladyzamosc@gmail.com", scale=1, world_z=camera.overlay.z - 1, color=GOLD,
+                     position=(-0.8, -0.3, 0))
+        destroy(text2, delay=DELAY)
