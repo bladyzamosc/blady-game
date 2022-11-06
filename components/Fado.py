@@ -1,6 +1,6 @@
 import time
 
-from ursina import camera, Entity, held_keys, window
+from ursina import camera, Entity, held_keys, window, Animation
 
 from components.const import UP, DOWN, RIGHT, LEFT
 
@@ -15,9 +15,11 @@ class Fado(Entity):
             model='cube'
         )
         self.visible = True
-        self.texture = 'assets/dog.png'
+        self.texture = 'assets/labrador.gif'
         self.scale = (FACTOR, FACTOR, FACTOR)
         self.position = (-0.80, 0, 0)
+        self.collider = 'box'
+
 
     def update_fado(self):
         self.react_key()

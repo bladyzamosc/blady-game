@@ -8,3 +8,9 @@ DOWN = 's'
 LEFT = 'a'
 RIGHT = 'd'
 PAUSE = 'p'
+
+POSITIVE = 1
+NEGATIVE = 2
+
+INITIAL_LIVES = 10
+MAX_LIVES = 20

@@ -1,4 +1,4 @@
-INITIAL_LIVES = 3
+from components.const import MAX_LIVES, INITIAL_LIVES
 
 
 class GameStats:
@@ -15,3 +15,5 @@ class GameStats:
 
     def update_lives(self, number):
         self.lives += number
+        if self.lives > MAX_LIVES:
+            self.lives = MAX_LIVES
